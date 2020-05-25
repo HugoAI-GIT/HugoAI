@@ -22,7 +22,7 @@ class Question:
 #Def
 
 def run_quiz():
-    answer = input(question_prompts_EN)
+    answer = input(question_prompts_EN + " ")
     if answer == "FR":
         print("Langue définie sur FR !");
         LAN = "FR"
