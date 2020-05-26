@@ -4,7 +4,7 @@ import socketserver
 import time
 import sys
 #Variables
-PORT = 80
+PORT = 10180
 Handler = http.server.SimpleHTTPRequestHandler
 
 LAN = ""
@@ -40,6 +40,9 @@ def run_quiz():
 
 run_quiz()
 
-#with socketserver.TCPServer(("", PORT), Handler) as httpd:
-#    print("serving at port", PORT)
-#    httpd.serve_forever()
+if LAN == "FR":
+    answer = input("Voulez-vous avoir la page d'aide en ligne ? [O/N]")
+    if answer == "O":
+        with socketserver.TCPServer(("", PORT), Handler) as httpd:
+            print("Serveur ouvert ! Sur le port : ", PORT)
+            #httpd.serve_forever()
