@@ -3,14 +3,12 @@ import http.server
 import socketserver
 import time
 import sys
+import os
 #Variables
-PORT = 10180
-Handler = http.server.SimpleHTTPRequestHandler
 
 LAN = ""
 
 question_prompts_EN = "What is your language ? [FR/EN]"
-question_prompts_FR = "Voulez-vous de l'aide grace à la plateforme web ?"
 
 #class
 
@@ -26,6 +24,11 @@ def run_quiz():
     if answer == "FR":
         print("Langue définie sur FR !");
         LAN = "FR"
+        # DEBUG
+        #print(LAN)
+        #time.sleep(3)
+        if input("Voulez-vous avoir la page d'aide en ligne ? [O/N]") == "O":
+            os.startfile("help.py")
     else:
         if answer == "":
             print("Langue définie sur FR ( Par Défaut ) !");
@@ -39,10 +42,3 @@ def run_quiz():
 #CODE
 
 run_quiz()
-
-if LAN == "FR":
-    answer = input("Voulez-vous avoir la page d'aide en ligne ? [O/N]")
-    if answer == "O":
-        with socketserver.TCPServer(("", PORT), Handler) as httpd:
-            print("Serveur ouvert ! Sur le port : ", PORT)
-            #httpd.serve_forever()
