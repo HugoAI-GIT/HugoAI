@@ -27,8 +27,9 @@ def run_quiz():
         # DEBUG
         #print(LAN)
         #time.sleep(3)
-        if input("Voulez-vous avoir la page d'aide en ligne ? [O/N]") == "O":
+        if input("Voulez-vous avoir la page d'aide en ligne ? [O/N] ") == "O":
             os.startfile("help.py")
+            print("Rendez-vous sur http://localhost:10180")
     else:
         if answer == "":
             print("Langue définie sur FR ( Par Défaut ) !");
